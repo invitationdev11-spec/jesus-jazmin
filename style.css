@@ -1,0 +1,279 @@
+    :root {
+      --gold: #b48643;
+      --gold-deep: #8f672f;
+      --gold-light: #d8bd87;
+      --ink: #171511;
+      --muted: #71695d;
+      --paper: #fbf8ef;
+      --paper-shadow: #e9dfca;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background:
+        radial-gradient(ellipse at 12% 12%, rgba(255,255,255,.9), transparent 28%),
+        radial-gradient(ellipse at 88% 82%, rgba(255,255,255,.75), transparent 30%),
+        linear-gradient(135deg, #e9e2d5, #f4f0e8 48%, #e5dccd);
+      font-family: "Cormorant Garamond", Georgia, serif;
+    }
+    .scene {
+      min-height: 100vh;
+      padding: clamp(16px, 4vw, 52px) 12px;
+      display: grid;
+      place-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .scene::before, .scene::after {
+      content: "✧";
+      position: fixed;
+      color: rgba(180,134,67,.22);
+      font-size: clamp(110px, 22vw, 270px);
+      line-height: 1;
+      pointer-events: none;
+      text-shadow: 0 0 35px rgba(180,134,67,.08);
+    }
+    .scene::before { left: -3vw; top: 2vh; transform: rotate(-18deg); }
+    .scene::after { right: -3vw; bottom: 0; transform: rotate(18deg); }
+
+    .invitation {
+      width: min(100%, 790px);
+      position: relative;
+      isolation: isolate;
+      padding: clamp(36px, 5.5vw, 66px) clamp(22px, 7vw, 82px) clamp(34px, 5vw, 58px);
+      text-align: center;
+      background:
+        radial-gradient(ellipse at 50% 30%, rgba(255,255,255,.8), transparent 53%),
+        radial-gradient(circle at 15% 80%, rgba(214,190,146,.09) 0 1px, transparent 1.5px),
+        radial-gradient(circle at 80% 22%, rgba(214,190,146,.10) 0 1px, transparent 1.5px),
+        var(--paper);
+      background-size: auto, 19px 19px, 23px 23px, auto;
+      box-shadow: 0 28px 75px rgba(56,43,24,.24), 0 5px 16px rgba(56,43,24,.12);
+      animation: cardIn 1s cubic-bezier(.2,.7,.2,1) both;
+    }
+    .invitation::before {
+      content: "";
+      position: absolute;
+      inset: 13px;
+      border: 1.4px solid rgba(180,134,67,.88);
+      pointer-events: none;
+    }
+    .invitation::after {
+      content: "";
+      position: absolute;
+      inset: 20px;
+      border: 1px solid rgba(180,134,67,.34);
+      pointer-events: none;
+    }
+    .ornament {
+      position: absolute;
+      z-index: 1;
+      width: clamp(76px, 15vw, 132px);
+      height: auto;
+      color: var(--gold);
+      opacity: .94;
+      pointer-events: none;
+    }
+    .ornament.tl { top: 13px; left: 13px; }
+    .ornament.tr { top: 13px; right: 13px; transform: scaleX(-1); }
+    .ornament.bl { bottom: 13px; left: 13px; transform: scaleY(-1); }
+    .ornament.br { bottom: 13px; right: 13px; transform: scale(-1); }
+
+    .content { position: relative; z-index: 2; }
+    .top-flourish, .bottom-flourish {
+      width: min(75%, 330px);
+      height: 24px;
+      margin: 0 auto;
+      color: var(--gold);
+      display: block;
+    }
+    .flower-wrap {
+      width: min(100%, 410px);
+      height: clamp(205px, 35vw, 295px);
+      margin: 1px auto 1px;
+      position: relative;
+      display: grid;
+      place-items: center;
+    }
+    .flower-wrap::before {
+      content: "";
+      position: absolute;
+      width: 76%;
+      height: 76%;
+      border: 1px solid rgba(180,134,67,.20);
+      border-radius: 50%;
+      box-shadow: 0 0 0 9px rgba(180,134,67,.035), 0 0 0 18px rgba(180,134,67,.025);
+    }
+    .flower-wrap::after {
+      content: "✧     ·     ✦     ·     ✧";
+      position: absolute;
+      top: 9%;
+      left: 0;
+      right: 0;
+      color: var(--gold);
+      opacity: .7;
+      letter-spacing: .65em;
+      font-size: 13px;
+      pointer-events: none;
+    }
+    .floral-art {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      position: relative;
+      z-index: 1;
+      mix-blend-mode: multiply;
+      filter: saturate(.84) contrast(1.02);
+      -webkit-mask-image: radial-gradient(ellipse, #000 57%, transparent 79%);
+      mask-image: radial-gradient(ellipse, #000 57%, transparent 79%);
+    }
+    .eyebrow {
+      text-transform: uppercase;
+      font-size: clamp(1.15rem, 3vw, 1.58rem);
+      line-height: 1.1;
+      letter-spacing: .015em;
+      margin: 2px 0 0;
+    }
+    .main-title {
+      text-transform: uppercase;
+      font-size: clamp(2.6rem, 7.5vw, 4.5rem);
+      font-weight: 500;
+      letter-spacing: -.045em;
+      line-height: .96;
+      margin: 4px 0 4px;
+    }
+    .couple {
+      color: var(--gold);
+      font-family: "Great Vibes", cursive;
+      font-size: clamp(4rem, 12vw, 6.8rem);
+      font-weight: 400;
+      line-height: 1.18;
+      margin: 4px 0 0;
+      text-shadow: 0 1px 0 rgba(255,255,255,.8);
+    }
+    .date-rule {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 13px;
+      margin: 1px auto 17px;
+      color: var(--gold);
+    }
+    .date-rule::before, .date-rule::after {
+      content: "";
+      width: clamp(22px, 7vw, 68px);
+      height: 2px;
+      background: var(--gold);
+      position: relative;
+    }
+    .date-rule::before { box-shadow: -7px 0 0 -0.4px var(--gold-light); }
+    .date-rule::after { box-shadow: 7px 0 0 -0.4px var(--gold-light); }
+    .date {
+      text-transform: uppercase;
+      font-size: clamp(1.45rem, 4.5vw, 2.3rem);
+      line-height: 1;
+      white-space: nowrap;
+      margin: 0;
+    }
+    .details {
+      text-transform: uppercase;
+      font-size: clamp(1.13rem, 3vw, 1.58rem);
+      line-height: 1.16;
+      margin: 4px 0;
+    }
+    .detail-icon {
+      display: block;
+      color: var(--gold);
+      font-size: 18px;
+      line-height: 1;
+      margin: 11px 0 3px;
+    }
+    .script-heading {
+      color: var(--gold);
+      font-family: "Great Vibes", cursive;
+      font-size: clamp(3rem, 8vw, 4.1rem);
+      line-height: 1.08;
+      margin: 7px 0 0;
+    }
+    .reception-copy {
+      text-transform: uppercase;
+      font-size: clamp(1.08rem, 2.8vw, 1.5rem);
+      line-height: 1.18;
+      margin: 4px auto 0;
+      max-width: 580px;
+    }
+    .tiny-flourish {
+      color: var(--gold);
+      letter-spacing: .4em;
+      font-size: 15px;
+      margin: 3px 0 0;
+    }
+
+    .countdown {
+      max-width: 450px;
+      margin: 21px auto 0;
+      padding: 13px 12px 8px;
+      border-top: 1px solid rgba(180,134,67,.32);
+    }
+    .countdown-title {
+      color: var(--gold-deep);
+      text-transform: uppercase;
+      letter-spacing: .19em;
+      font: 600 .67rem system-ui, sans-serif;
+      margin-bottom: 11px;
+    }
+    .count-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+    .count-number {
+      display: block;
+      color: var(--ink);
+      font: 500 clamp(1.45rem, 4vw, 1.9rem) "Cormorant Garamond", serif;
+      line-height: 1;
+    }
+    .count-unit {
+      display: block;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      font: .58rem system-ui, sans-serif;
+      margin-top: 5px;
+    }
+
+    .action-area { margin: 25px auto 0; max-width: 590px; }
+    .btn-outline-gold {
+      --bs-btn-color: var(--gold-deep); --bs-btn-border-color: var(--gold);
+      --bs-btn-hover-color: #fff; --bs-btn-hover-bg: var(--gold-deep); --bs-btn-hover-border-color: var(--gold-deep);
+      border-radius: 999px; padding: 10px 19px; font: 500 .86rem system-ui, sans-serif;
+    }
+    .action-area .btn { margin: 4px; }
+    .closing {
+      color: var(--gold-deep);
+      font-size: 1.12rem;
+      font-style: italic;
+      margin: 17px 0 0;
+    }
+
+    @keyframes cardIn {
+      from { opacity: 0; transform: translateY(22px) scale(.99); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @media (max-width: 480px) {
+      .scene { padding: 10px 7px; }
+      .invitation { padding: 31px 17px 31px; }
+      .invitation::before { inset: 9px; }
+      .invitation::after { inset: 14px; }
+      .ornament { width: 75px; }
+      .ornament.tl { top: 9px; left: 9px; }
+      .ornament.tr { top: 9px; right: 9px; }
+      .ornament.bl { bottom: 9px; left: 9px; }
+      .ornament.br { bottom: 9px; right: 9px; }
+      .flower-wrap { height: 205px; }
+      .date-rule { gap: 7px; }
+      .date { font-size: clamp(1.22rem, 5vw, 1.52rem); }
+      .action-area .btn { width: 100%; margin: 4px 0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation: none !important; }
+    }
